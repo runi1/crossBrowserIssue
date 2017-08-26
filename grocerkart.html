@@ -247,7 +247,16 @@ transition : all 2s ease;
 <div class="container-fluid">
 <div class="row" >
 <div class="col-sm-12">
-<div class="row" style="background:linear-gradient(#7fff7f,#99ff99);padding:1%;font-size:0.8em;">
+<div class="row" style="
+background: #7fff7f;
+background: -moz-linear-gradient(#7fff7f, #99ff99);
+background: -webkit-linear-gradient(#7fff7f, #99ff99);
+background: -o-linear-gradient(#7fff7f, #99ff99);
+background: -ms-linear-gradient(#7fff7f, #99ff99);/*For IE10*/
+background: linear-gradient(#7fff7f, #99ff99);
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#7fff7f', endColorstr='#99ff99');/*For IE7-8-9*/ 
+height: 1%;/*For IE7*/ 
+padding:1%;font-size:0.8em;">
 
 <div class="col-md-8">
 
@@ -771,9 +780,35 @@ transition : all 2s ease;
 
 //document.getElementById('txtSearch').setAttribute("placeholder","testmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
 
+var style = document.documentElement.style;
+//alert(style.MsTransition);
+
+if(style.MsTransition == undefined)
+{
+  
+   var divBtm1 = document.querySelectorAll('.divBottom1');
+   divBtm1[0].addEventListener("mouseover",function() {  divBtm1[0].style.backgroundColor = "#02adec"; });
+   divBtm1[0].addEventListener("mouseout",function() {  divBtm1[0].style.backgroundColor = "white"; });
+   
+    var divBtm2 = document.querySelectorAll('.divBottom2');
+   divBtm2[0].addEventListener("mouseover",function() {  divBtm2[0].style.backgroundColor = "#f86532"; });
+   divBtm2[0].addEventListener("mouseout",function() {  divBtm2[0].style.backgroundColor = "white"; });
+   
+    var divBtm3 = document.querySelectorAll('.divBottom3');
+   divBtm3[0].addEventListener("mouseover",function() {  divBtm3[0].style.backgroundColor = "#66c916"; });
+   divBtm3[0].addEventListener("mouseout",function() {  divBtm3[0].style.backgroundColor = "white"; });
+   
+    var divBtm4 = document.querySelectorAll('.divBottom4');
+   divBtm4[0].addEventListener("mouseover",function() {  divBtm4[0].style.backgroundColor = "#f3a52a"; });
+   divBtm4[0].addEventListener("mouseout",function() {  divBtm4[0].style.backgroundColor = "white"; });
+   
+}
+
 function showLocationPop()
 {
-  var divLoc =  document.getElementsByClassName("divLocation")[0];
+  var divLoc =  document.querySelectorAll('.divLocation');
+  //document.getElementsByClassName("divLocation")[0];
+  if(divLoc.classList)
   divLoc.classList.toggle('hideCity');
   
   setTimeout(function() {
@@ -791,7 +826,9 @@ function showLocationPop()
 function toogleCategoryDiv(cat)
 {
  
-  var divParent = document.getElementsByClassName("parentCat")[0];
+  var divParent = document.querySelectorAll('.parentCat');
+ // document.getElementsByClassName("parentCat")[0];
+ if(divParent.classList)
   divParent.classList.toggle('hideCategory');
   var divMarginLeft =  window.getComputedStyle(divParent).marginLeft;
   divMarginLeft = divMarginLeft.substring(0,divMarginLeft.length-2);
