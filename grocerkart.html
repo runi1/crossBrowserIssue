@@ -1,0 +1,849 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=0" >
+<meta name="keywords" content="grocery ,snacks,breakfast" >
+<meta name="description" content="grocery online shopping in hyderabad" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Grocerkart </title>
+<style>
+.columnParent {
+text-transform:uppercase;
+}
+
+.inputSearch 
+{
+  line-height:33px; 
+  height:33px !important;
+  border-radius:8px;
+  background-color:#fafafa;
+  width:90%;
+  font-size: 1.3vmin;
+  font-weight:600;
+  border:none;
+  padding-left:2%;
+}
+
+.btnSubmit
+{
+    background-color:white;border:none;outline:none;font-size:2vh;
+	
+}
+
+.btnSubmit:focus,.inputSearch:focus
+{
+ outline:0;
+}
+
+.btnSubmit:after
+{
+  content : '\1F50D';
+}
+
+.divSubmit
+{
+  display:inline;
+  position: absolute;
+ margin: 0;
+ right: 69px;
+ top: 3px;
+
+}
+
+.ulHeader li 
+{
+    border: solid black 1px;
+    border-radius: 10px;
+    height: 14%;
+    text-align: center;
+    //padding: 4%;
+	//padding-right:6%;
+    box-shadow: 1px 1px 18px 0.1px white;
+	box-sizing :border-box;
+	margin-right:3%;
+}
+.ulHeader li:hover
+{
+       
+    border: solid white 1px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 18px 0.1px white;
+}
+
+.aHeader
+{
+  color:white !important;
+  text-decoration:none !important;
+ // padding:10% !important;
+ // padding-right:14%!important;
+}
+
+.ulHeader
+{
+ list-style:none;
+ padding:0px;
+ 
+}
+
+
+.ulHeader li {display:inline-block; line-height:31px;}
+.ulHeader li {width:18%;}
+
+
+.divLocation {
+background-color:white;
+z-index: 999;
+position: absolute;
+width: 28%;
+text-align: center;
+font-size: 12px;
+left:7.6%;
+top:102%;
+padding:0% 1.5%;
+height:155px;
+transition:height 0.7s linear,overflow 0.7s linear;
+
+}
+.hideCity { height:0px;transition:height 0.7s linear,overflow 0.7s linear;}
+
+.categoryTitle 
+{
+  font-size: 2vh;
+  color:grey;
+}
+
+.divCatList [class *=col]
+{
+  padding:0;
+ 
+}
+
+.panel-heading{background-color:white !important;}
+
+.divCatLine1 , .divCatLine2, .divCatLine3 ,.divCatLine4
+{
+ float:left;margin-right:6%;
+}
+
+.divCatLine1  ul , .divCatLine2 ul , .divCatLine3 ul,.divCatLine4 ul {
+  list-style:none;
+  padding-left:0;
+}
+ 
+.divCatLine1 a  ,.divCatLine2 a, .divCatLine3 a ,.divCatLine4 a
+{
+  text-decoration:underline;
+  color:grey;
+}
+
+
+
+.parentCat
+{
+position:absolute;width:600px;font-size:small;z-index:999;height:250px;overflow:visible;top:65px;background-color:white;
+transition:top 0.5s linear;
+
+}
+ 
+.hideCategory{
+height:0px;
+top:75px;
+overflow:hidden;
+transition:top 0.5s linear;
+}
+
+.divCoupons {
+background-color:rgb(232,232,232);
+height:42px;    
+
+}
+
+.divCoupons  span: after{
+content : 'DEALS AND OFFERS';
+
+}
+ 
+ .divOffers 
+ {
+ 
+ 
+ }
+ 
+ .divOffers img {max-width:100%;max-height:100%; }
+ 
+ .aBottom1 { color: grey;text-decoration: none; text-align: center;}
+ 
+ 
+ .divBottom1 { 
+text-align:center;
+border:solid 1px rgb(232,232,232);border-top:none;
+background: linear-gradient( to left ,white 50%,#02adec 50%);
+background-size: 200% 100%;
+background-position:right bottom;
+transition : all 2s ease;
+
+
+
+ }
+ 
+ .divBottom2 { text-align:center;border:solid 1px rgb(232,232,232);border-top:none;background: linear-gradient( to left ,white 50%,#f86532 50%); background-size: 200% 100%;
+background-position:right bottom;
+transition : all 2s ease;
+ }
+ .divBottom3 { text-align:center;border:solid 1px rgb(232,232,232);border-top:none;background: linear-gradient( to left ,white 50%,#66c916 50%); background-size: 200% 100%;
+background-position:right bottom;
+transition : all 2s ease;
+ }
+
+.divBottom4 { text-align:center;border:solid 1px rgb(232,232,232);border-top:none;background: linear-gradient( to left ,white 50%,#f3a52a 50%); background-size: 200% 100%;
+background-position:right bottom;
+transition : all 2s ease;
+ }
+ 
+ 
+ 
+ .divBottom1:hover, .divBottom2:hover,.divBottom3:hover,.divBottom4:hover { 
+
+ background-position:left bottom;
+//box-shadow: inset 300px 0 0 0 #02adec;
+ color:white;
+ }
+ 
+ .divStores {text-align:center; color:#02adec; border:solid 1px rgb(232,232,232);border-top:none;}
+  
+ .divStores p{padding:6% 0%}
+ 
+ .divStoresOffers {overflow:hidden; }
+ .divStoresOffers img { max-width:100%;max-height:100%;transition : all 2s ease; }
+ .divStoresOffers:hover img { transform: scale(1.1)}
+ .footerStyle ul { list-style:none;color:white;padding-left:0;}
+ .footerStyle ul li {padding-bottom:2%; }
+ 
+   *::-webkit-input-placeholder {
+    color: grey;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: grey;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: grey;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: grey;
+}
+ 
+ 
+ </style>
+
+ </head>
+
+<body>
+<div class="container-fluid">
+<div class="row" >
+<div class="col-sm-12">
+<div class="row" style="background:linear-gradient(#7fff7f,#99ff99);padding:1%;font-size:0.8em;">
+
+<div class="col-md-8">
+
+<div class="columnParent">
+
+<span style="color: grey; background-color: white;display:inline-block;margin-left: 6%; width:23%; height: 7%;line-height:3;font-size:0.9em;text-transform:uppercase;text-align: center;">
+<a href="javascript:void(0)" style="text-decoration: none;color:grey;" onclick="showLocationPop()" >Hyderabad</a> <i class="fa fa-angle-down"></i></span>
+
+<div class="divLocation hideCity form-group" class="form-group" style="overflow:hidden;" > 
+<div class="childDiv">
+<div>
+<br>
+<select class="form-control">
+<option value="hyderabad" text="hyderabad">Hyderabad </option>
+ </select>
+</div>
+<br>
+<div><input type="text" placeholder="Enter your area / apartment / pincode" class="form-control" id="txtSearch"> </div>
+<br>
+<div> <input type="button" value="CONTINUE" class="form-control">  </div>
+<br>
+</div>
+
+</div>
+
+
+
+</div>
+
+ </div>
+ 
+ 
+ <div class="col-md-1" > 
+ 
+<div class="columnParent"> 
+<span> <i class="fa fa-user" aria-hidden="true"></i></span>
+<span>Register </span>
+</div>
+ 
+ 
+ </div>
+ 
+ 
+ <div class="col-md-1"> 
+ 
+ <div class="columnParent"> 
+<span> <i class="fa fa-user" aria-hidden="true"></i></span>
+<span>Log in </span>
+</div>
+ 
+ 
+ 
+ </div>
+
+ 
+ <div class="col-md-1"> 
+ <i class="fa fa-shopping-cart" style="font-size:x-large;"></i>
+ <span id="totCartmoney"> </span>
+ </div>
+ 
+ 
+ <div class="col-md-1" style="font-weight:bold;font-size:1.2em;"> 
+<span>Rs . </span>
+ <span id="totCartmoney"> 0</span>
+ </div>
+ 
+ </div>
+</div>
+</div>
+
+<div class="row" style="display:flex;align-items:center;flex-wrap:wrap;background-color:black;">
+<div class="col-sm-1 col-sm-offset-1"> 
+ <h1> 
+ <a href="www.pushpa.com"> 
+ <img src="image/logo.png" class="img-responsive">
+ </a>
+ </h1>
+ </div>
+
+<div class="col-sm-5 col-sm-offset-1"> 
+<div class="searchDiv">
+ <input type="text" id="txtSearch" class="inputSearch"  placeholder="SEARCH FOR OVER 12,000,E.G,DAL,AATA....." >
+<div class="divSubmit">
+  <button class="btnSubmit"> </button>
+ </div>
+ </div>
+ </div>
+
+<div class="col-sm-4">
+<ul class="ulHeader">
+<li><div class="divHome"> <a href="www.pushpa.com/home" class="aHeader">Home</a></div> </li>
+<li><div class="divHome"> <a href="www.pushpa.com/cat" class="aHeader">Categories</a></div> </li>
+<li><div class="divHome"> <a href="www.pushpa.com/contact" class="aHeader">ContactUs</a></div></li>
+<li><div class="divHome"> <a href="www.pushpa.com/Blog" class="aHeader">Blog</a></div></li>
+ </div>
+</ul>
+</div>
+
+<!-- Category Headings -->
+
+<div class="row divCatList" style="background-color:white;" > 
+
+<div class="col-sm-2 col-sm-offset-1" onmouseover="toogleCategoryDiv('vege')">
+<div class="panel panel-default" >
+ <div class="panel-heading" > 
+ <span><img src="image/grocery.png"> </span><span class="categoryTitle" style="margin-left:16%;">Groceries </span> 
+ </div>
+</div>
+
+<!-- divCategoryList -->
+
+<div style="" class="parentCat hideCategory"> 
+
+<div class="divCatLine1">
+<p><a href="www.google.com">VEGETABLES </a></p>
+
+<ul>
+
+<li>Vegetable1 </li>
+<li>Vegetable2</li>
+<li>Vegetable3</li>
+<li>Vegetable4</li>
+</ul>
+
+<p><a href="www.google.com">EDIBLE OILS </a></p>
+
+<ul>
+
+<li>Edible oils1 </li>
+<li>Edible oils2</li>
+<li>Edible oils3</li>
+<li>Edible oils4</li>
+</ul>
+
+
+</div>
+
+
+<div class="divCatLine2">
+<p><a href="www.google.com">FLOURS & RAVA </a></p>
+
+<ul>
+
+<li>Flours & Rava-1 </li>
+<li>Flours & Rava-2</li>
+<li>Flours & Rava-3</li>
+<li>Flours & Rava-4</li>
+</ul>
+
+<p><a href="www.google.com">DALS & PULSES </a></p>
+
+<ul>
+
+<li>Dals & Pulses -1 </li>
+<li>Dals & Pulses -2</li>
+<li>Dals & Pulses -3</li>
+<li>Dals & Pulses -4</li>
+</ul>
+
+
+</div>
+
+
+
+<div class="divCatLine3">
+<p><a href="www.google.com">RICE & GRAINS </a></p>
+
+<ul>
+
+<li>Rice & Grains-1 </li>
+<li>Rice & Grains-2</li>
+<li>Rice & Grains-3</li>
+<li>Rice & Grains-4</li>
+</ul>
+
+<p><a href="www.google.com">FRUITS </a></p>
+
+<ul>
+
+<li>Fruits-1 </li>
+<li>Fruits-2</li>
+<li>Fruits-3</li>
+<li>Fruits-4</li>
+</ul>
+
+
+</div>
+
+
+
+<div class="divCatLine4">
+<p><a href="www.google.com">HAIR CARE</a></p>
+
+<ul>
+
+<li>Hair Care-1 </li>
+<li>Hair Care-2</li>
+<li>Hair Care-3</li>
+<li>Hair Care-4</li>
+</ul>
+
+<p><a href="www.google.com">LAUNDRY </a></p>
+
+<ul>
+
+<li>Laundry -1 </li>
+<li>Laundry -2</li>
+<li>Laundry -3</li>
+<li>Laundry -4</li>
+</ul>
+
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+<div class="col-sm-2" onmouseover="toogleCategoryDiv('fresh')">
+<div class="panel panel-default">
+ <div class="panel-heading"> 
+ <span><img src="image/fresh.png" alt="Fresh Foods"> </span><span class="categoryTitle" style="margin-left:16%;">Fresh Foods</span> 
+ </div>
+</div>
+
+</div>
+
+
+<div class="col-sm-2" onmouseover="toogleCategoryDiv('pack')">
+<div class="panel panel-default">
+ <div class="panel-heading"> 
+ <span><img src="image/packaged.png" alt="Packaged Foods"> </span><span class="categoryTitle" style="margin-left:1%;">Packaged Foods</span> 
+ </div>
+</div>
+
+</div>
+
+<div class="col-sm-2" onmouseover="toogleCategoryDiv('personal')">
+<div class="panel panel-default">
+ <div class="panel-heading"> 
+ <span><img src="image/personal-care.png" alt="Personal Care"> </span><span class="categoryTitle" style="margin-left:4%;">Personal Care</span> 
+ </div>
+</div>
+
+</div>
+
+<div class="col-sm-2" onmouseover="toogleCategoryDiv('home')">
+<div class="panel panel-default">
+ <div class="panel-heading"> 
+ <span><img src="image/home.png" alt="Home Needs"> </span><span class="categoryTitle" style="margin-left:4%;">Home Needs</span> 
+ </div>
+</div>
+
+</div>
+
+
+</div>
+
+
+<!--Image Slider-->
+
+<div class="row">
+<div class="col-sm-12">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+	   <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="image/Organic.jpg" alt="Grocerkart Organic" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="image/Monsoon.jpg" alt="Grocerkart Banners" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="image/Back2School.jpg" alt="Grocerkart Fresh Banners" style="width:100%;">
+      </div>
+    
+	
+	
+	<div class="item">
+        <img src="image/banners.jpg" alt="Grocerkart Fresh Banners" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+
+</div>
+
+</div>
+
+<br>
+
+<!-- Offers and Deals -->
+
+<div class="row"> 
+<div class="col-sm-12">
+<div class="divCoupons"> 
+<img src="image/strip.png" height="56px">
+<span style="position: absolute;left:4%; top: 18%; color: white;"> &nbsp; DEALS AND OFFERS</p>  </span>
+</div>
+</div>
+</div>
+
+<div class="row"> 
+<div class="col-sm-12">
+&nbsp;
+</div>
+</div>
+
+<div class="row"> 
+
+<div class="col-sm-3">
+<p  style="color:#02adec;">BUY AND GET FREE </p>
+</div>
+
+<div class="col-sm-3">
+<p style="color:#f86532;">GET COUPONS </p>
+</div>
+
+
+<div class="col-sm-3">
+<p style="color:#66c916;">GET COMBOS</p>
+</div>
+
+
+<div class="col-sm-3">
+<p style="color:#f3a52a;">DISCOUNTS </p>
+</div>
+
+
+</div>
+
+
+<!--Deals and Offers -->
+
+
+<div class="row"> 
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divOffers"><img src="image/offer1.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divBottom1"> <p>You buy one , <br/> we give two. </p></div>
+</a>
+
+
+</div>
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divOffers"><img src="image/offer2.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divBottom2"> <p>You buy one , <br/> we give two. </p></div>
+</a>
+
+</div>
+
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divOffers"><img src="image/offer3.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divBottom3"> <p>You buy one , <br/> we give two. </p></div>
+</a>
+
+
+</div>
+
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divOffers"><img src="image/offer4.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divBottom4"> <p>You buy one , <br/> we give two. </p></div>
+</a>
+
+</div>
+
+
+</div>
+
+<div class="row"> <div class="col-sm-12">
+<div style="padding:1% 0%;"> </div>
+</div> </div>
+
+
+<div class="row"> 
+<div class="col-sm-12">
+<div class="divCoupons"> 
+<img src="image/strip.png" height="56px">
+<span style="position: absolute;left:4%; top: 18%; color: white;"> &nbsp; Speciality Stores</p>  </span>
+</div>
+</div>
+</div>
+
+<div class="row"> <div class="col-sm-12">
+<div style="padding:1% 0%;"> </div>
+</div> </div>
+
+<div class="row"> 
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divStoresOffers"><img src="image/HungryKya.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divStores"> <p> HUNGRY KYA </p></div>
+</a>
+
+
+</div>
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divStoresOffers"><img src="image/KeralaStores.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divStores"> <p>KERALA STORES </p></div>
+</a>
+
+</div>
+
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divStoresOffers"><img src="image/BabyCare1.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divStores"> <p>BABY CARE </p></div>
+</a>
+
+
+</div>
+
+
+<div class="col-sm-3">
+
+<a href="www.google.com">
+<div class="divStoresOffers"><img src="image/OrganicZone.jpg"></div>
+</a>
+<a href="www.google.com" class="aBottom" style="text-decoration:none;color:grey;">
+<div class="divStores"> <p>ORGANIC ZONE </p></div>
+</a>
+
+</div>
+
+
+</div>
+
+
+<div  class="row footerStyle" style="background-color:black;padding-top:2%;"  >
+<div class="col-sm-3">
+<h5 style="color:#b0d235;">CORPORATE</h5>
+<ul> <li>About Us </li>  <li> FAQS </li> <li> Testimonials </li> <li> Coupons </li> <li>Blogs </li> </ul> 
+</div>
+
+
+
+<div class="col-sm-3">
+<h5 style="color:#b0d235;">CORPORATE</h5>
+<ul> <li>About Us </li>  <li> FAQS </li> <li> Testimonials </li> <li> Coupons </li> <li>Blogs </li> </ul> 
+</div>
+
+
+
+<div class="col-sm-3">
+<h5 style="color:#b0d235;">CORPORATE</h5>
+<ul> <li>About Us </li>  <li> FAQS </li> <li> Testimonials </li> <li> Coupons </li> <li>Blogs </li> </ul> 
+</div>
+
+<div class="col-sm-3">
+<h5 style="color:#b0d235;display:none;">TESTIMONIALS</h5>
+<video controls height="200px" width="200px">
+<source src="http://grocerkart.com/cf/assets/dummy/gkt-testimon.mp4" type="video/mp4">
+ </video> 
+</div>
+
+</div>
+
+<footer>
+<div class="row"> <div class="col-sm-12" style="background-color:#222;"><address style="color: white;
+    text-align:center;margin-top:20px;">© Copyright 2017 Pushpa. </address> </div> </div>
+</footer>
+
+<script>
+
+//document.getElementById('txtSearch').setAttribute("placeholder","testmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+
+function showLocationPop()
+{
+  var divLoc =  document.getElementsByClassName("divLocation")[0];
+  divLoc.classList.toggle('hideCity');
+  
+  setTimeout(function() {
+  if(divLoc.classList.indexOf('hideCity') > -1)
+   divLoc.style.overflow = "hidden";
+  else {
+    divLoc.style.overflow = "visible";
+  }
+  
+  },3000);
+
+}
+
+
+function toogleCategoryDiv(cat)
+{
+ 
+  var divParent = document.getElementsByClassName("parentCat")[0];
+  divParent.classList.toggle('hideCategory');
+  var divMarginLeft =  window.getComputedStyle(divParent).marginLeft;
+  divMarginLeft = divMarginLeft.substring(0,divMarginLeft.length-2);
+   var divMarginRight =  window.getComputedStyle(divParent).marginRight;
+  divMarginRight = divMarginRight.substring(0,divMarginRight.length-2);
+//  alert(divMarginRight);
+ 
+ // alert(window.getComputedStyle(divParent).marginLeft);
+  
+   if(cat=='vege')
+ {
+   // alert(divMarginLeft);
+	
+	//if(divMarginLeft > 0  )
+	//{
+	  divParent.style.marginLeft = "0px";
+	//}
+ }
+   else if(cat=="fresh")
+   {
+     divParent.style.marginLeft = "98%";
+   }
+   
+   else if(cat=="pack")
+   {
+     divParent.style.marginLeft = "200%";
+   }
+   
+   else if(cat=="personal")
+   {
+     divParent.style.marginLeft = "300%";
+   }
+   
+   else if(cat=="home")
+   {
+     
+	 divParent.style.marginRight = "150%";
+   }
+   
+   
+   
+}
+
+
+
+
+
+ </script>
+ 
+ </div>
+ 
+
+</body>
+
+</html>
